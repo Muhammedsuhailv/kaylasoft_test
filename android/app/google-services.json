@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897963909111",
+    "project_id": "kayla-test-3ccfd",
+    "storage_bucket": "kayla-test-3ccfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897963909111:android:08e15f56c2161b742418f2",
+        "android_client_info": {
+          "package_name": "com.example.keylatest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChtDIarzfxdjm7hnbgCPn6MKKgTR2nxq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
