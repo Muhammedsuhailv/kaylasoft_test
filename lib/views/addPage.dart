@@ -92,181 +92,130 @@ class _AddDocState extends State<AddDoc> {
       body: SingleChildScrollView(
         child: Form(
           key: formKey,
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              Center(
-                child:
-                //     ? Stack(
-                //   children: [
-                //     CircleAvatar(
-                //       radius: 50,
-                //       child: Positioned(
-                //         bottom: 0,
-                //         right: 0,
-                //         child: IconButton(
-                //           style: ButtonStyle(
-                //             backgroundColor: MaterialStateProperty.all(HexColor("54E70F")),
-                //           ),
-                //           onPressed: () => _pickImage(context),
-                //           icon: const Icon(
-                //             Icons.edit,
-                //             color: Colors.white,
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // )
-                //     : Stack(
-                //   children: [
-                //     CircleAvatar(
-                //       backgroundColor: Colors.cyan,
-                //       radius: 50,
-                //       child: ClipOval(
-                //         child: Container(
-                //           height: 105,
-                //           width: 105,
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(104),
-                //           ),
-                //           child: Image.file(_imageFile!, fit: BoxFit.cover),
-                //         ),
-                //       ),
-                //     ),
-                //     Positioned(
-                //       bottom: 0,
-                //       right: 0,
-                //       child: IconButton(
-                //         style: ButtonStyle(
-                //           backgroundColor: MaterialStateProperty.all(HexColor("54E70F")),
-                //         ),
-                //         onPressed: () => _pickImage(context),
-                //         icon: const Icon(
-                //           Icons.edit,
-                //           color: Colors.white,
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-
-               Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    CircleAvatar(
-                      backgroundImage: _imageFile != null
-                          ? FileImage(_imageFile!)
-                          : const AssetImage("asset/profile.png") as ImageProvider,
-                      radius: 60,
-                    ),
-                    Positioned(
-                      right: -5,
-                      bottom: -3,
-                      child: Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: const Color(0xff019744),
-                        ),
-                        child: IconButton(
-                                  onPressed: () => _pickImage(context),
-                          color: Colors.white,
-                          icon: const Icon(Icons.edit),
-                          iconSize: 14,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Column(
+              children: [
+                const SizedBox(height: 30),
+                Center(
+                  child:
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: _imageFile != null
+                            ? FileImage(_imageFile!)
+                            : const AssetImage("asset/profile.png") as ImageProvider,
+                        radius: 60,
+                      ),
+                      Positioned(
+                        right: -5,
+                        bottom: -3,
+                        child: Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xff019744),
+                          ),
+                          child: IconButton(
+                                    onPressed: () => _pickImage(context),
+                            color: Colors.white,
+                            icon: const Icon(Icons.edit),
+                            iconSize: 14,
+                          ),
                         ),
                       ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomTextfield(
+                    cntrl: nameController,
+                    label: "Full Name",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomDropdown(
+                    hint: "District",
+                    items: const ['Malappuram', 'Kozhikode', 'Wayanad', 'Kannur', 'Kasaragod'],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedDistrict = value!;
+                      });
+                    },
+                    value: selectedDistrict,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomTextfield(
+                    cntrl: emailController,
+                    label: "Email",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomTextfield(
+                    cntrl: phoneController,
+                    label: "Phone Number",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CustomDropdown(
+                    hint: "Gender",
+                    items: const ['Male', 'Female', 'Other'],
+                    onChanged: (value) {
+                      setState(() {
+                        selectedGender = value!;
+                      });
+                    },
+                    value: selectedGender,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(const Color(0xff019744)),
+                      minimumSize: MaterialStateProperty.all(Size(screenWidth, 50)),
                     ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomTextfield(
-                  cntrl: nameController,
-                  label: "Full Name",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomDropdown(
-                  hint: "District",
-                  items: const ['Malappuram', 'Kozhikode', 'Wayanad', 'Kannur', 'Kasaragod'],
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDistrict = value!;
-                    });
-                  },
-                  value: selectedDistrict,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomTextfield(
-                  cntrl: emailController,
-                  label: "Email",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomTextfield(
-                  cntrl: phoneController,
-                  label: "Phone Number",
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CustomDropdown(
-                  hint: "Gender",
-                  items: const ['Male', 'Female', 'Other'],
-                  onChanged: (value) {
-                    setState(() {
-                      selectedGender = value!;
-                    });
-                  },
-                  value: selectedGender,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(const Color(0xff019744)),
-                    minimumSize: MaterialStateProperty.all(Size(screenWidth * 0.8, 50)), // Adjust width as needed
-                  ),
-                  onPressed: () async {
-                    if (formKey.currentState!.validate()) {
-                      String? imageUrl;
-                      if (_imageFile != null) {
-                        imageUrl = await uploadImage(_imageFile!);
-                      }
-                      addDoctor(imageUrl);
-                      Navigator.pop(context);
-                      print("Doctor added successfully!");
-                    } else {
-                      if (nameController.text.isEmpty) {
-                        print("Full Name is required!");
-                      }
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        String? imageUrl;
+                        if (_imageFile != null) {
+                          imageUrl = await uploadImage(_imageFile!);
+                        }
+                        addDoctor(imageUrl);
+                        Navigator.pop(context);
+                        print("Doctor added successfully!");
+                      } else {
+                        if (nameController.text.isEmpty) {
+                          print("Full Name is required!");
+                        }
 
-                      if (emailController.text.isEmpty) {
-                        print("Email is required!");
-                      }
+                        if (emailController.text.isEmpty) {
+                          print("Email is required!");
+                        }
 
-                      if (phoneController.text.isEmpty) {
-                        print("Phone Number is required!");
+                        if (phoneController.text.isEmpty) {
+                          print("Phone Number is required!");
+                        }
                       }
-                    }
-                  },
-                  child: const Text(
-                    "Save",
-                    style: TextStyle(color: Colors.white),
+                    },
+                    child: const Text(
+                      "Save",
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

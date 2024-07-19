@@ -12,8 +12,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? selectedGender = 'All';
-  String? selectedDistrict = 'All';
+  String? selectedGender = 'Gender';
+  String? selectedDistrict = 'District';
 
   @override
   Widget build(BuildContext context) {
